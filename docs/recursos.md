@@ -33,7 +33,7 @@ El proyecto comienza el lunes 9 de noviembre de 2026 y termina con la defensa de
 | 6 | 18 de diciembre | Integración, pruebas, correcciones y demostración final. | 12 |
 | **Total** | | | **72** |
 
-En cada revisión se mostrará el trabajo terminado y se ajustará el siguiente sprint. Se pospondrán primero los requisitos Should y Could; si el MVP no cabe, se renegociará con el profesorado. Los festivos y compromisos pueden reducir la disponibilidad.
+En cada revisión se mostrará el trabajo terminado y se ajustará el siguiente sprint. Los registros se recogen en [seguimiento semanal](seguimiento/README.md). Se pospondrán primero los requisitos Should y Could; si el MVP no cabe, se renegociará con el profesorado. Los festivos y compromisos pueden reducir la disponibilidad.
 
 ## 3. Stack y herramientas propuestas
 

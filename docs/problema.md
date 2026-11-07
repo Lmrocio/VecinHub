@@ -49,7 +49,7 @@ Los siguientes perfiles son **arquetipos de diseño**, no personas entrevistadas
 
 ## 3. Investigación exploratoria
 
-El equipo mantuvo conversaciones informales con personas de su entorno sobre la comunicación en sus comunidades de vecinos y la utilidad de una aplicación como VecinHub. Las aportaciones se recogieron de manera cualitativa, sin un cuestionario estructurado ni un recuento sistemático de participantes o respuestas. Por ello, los siguientes hallazgos resumen temas mencionados y no permiten calcular porcentajes ni generalizar los resultados a todas las comunidades.
+Mantuvimos conversaciones informales con personas de nuestro entorno sobre la comunicación en sus comunidades de vecinos y la utilidad de una aplicación como VecinHub. Las aportaciones se recogieron de manera cualitativa, sin un cuestionario estructurado ni un recuento sistemático de participantes o respuestas. Por ello, los siguientes hallazgos resumen temas mencionados y no permiten calcular porcentajes ni generalizar los resultados a todas las comunidades.
 
 Las personas consultadas señalaron estas dificultades:
 

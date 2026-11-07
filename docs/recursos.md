@@ -21,7 +21,7 @@ Pablo concentra varias áreas técnicas; Rocío apoyará la integración y el de
 
 ## 2. Estimación y calendario
 
-El proyecto comienza el lunes 9 de noviembre de 2026 y termina con la defensa del viernes 18 de diciembre. El equipo compromete 12 horas-persona por sprint, 72 en total, con 8 horas de reserva incluidas.
+El proyecto comienza el lunes 9 de noviembre de 2026 y termina con la defensa del viernes 18 de diciembre. Dedicaremos 12 horas-persona por sprint, 72 en total, con 8 horas de reserva incluidas.
 
 | Sprint | Revisión | Resultado previsto | Horas-persona |
 |---|---|---|---:|

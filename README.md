@@ -13,7 +13,7 @@
 
 ## Descripción
 
-VecinHub es una propuesta de aplicación web *mobile-first* dirigida a comunidades de vecinos autogestionadas de entre 6 y 40 viviendas. Surge de la necesidad de organizar los avisos y las incidencias cuando la información se dispersa entre grupos de mensajería, conversaciones y carteles. Las conversaciones exploratorias mantenidas con personas del entorno del equipo también señalaron que algunos residentes no pertenecen al grupo de la comunidad o prefieren no compartir su número de teléfono.
+VecinHub es una propuesta de aplicación web *mobile-first* dirigida a comunidades de vecinos autogestionadas de entre 6 y 40 viviendas. Surge de la necesidad de organizar los avisos y las incidencias cuando la información se dispersa entre grupos de mensajería, conversaciones y carteles. Las conversaciones exploratorias mantenidas con personas de nuestro entorno también señalaron que algunos residentes no pertenecen al grupo de la comunidad o prefieren no compartir su número de teléfono.
 
 La aplicación reúne en un mismo espacio las incidencias, los avisos oficiales y las consultas vecinales. El presidente puede crear la comunidad e invitar a los residentes mediante un enlace o código QR, sin depender de un módulo contable. El desarrollo se plantea con el stack MERN: MongoDB, Express, React y Node.js.
 

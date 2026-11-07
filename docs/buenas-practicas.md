@@ -1,71 +1,87 @@
-# Guía de Buenas Prácticas y Estándares de Desarrollo - VecinHub
+# Guía de buenas prácticas de trabajo y gestión del proyecto
 
-Este documento establece las normas y convenciones técnicas que rigen el desarrollo del proyecto VecinHub para garantizar la calidad del software, la consistencia del código y la fluidez del trabajo en equipo.
+**Proyecto:** VecinHub
+**Módulo:** Proyecto Integrado (DAW)
+**Equipo:** Rocío Luque Montes y Pablo Sanz Aznar
 
----
+En esta guía recogemos cómo vamos a organizarnos durante los seis sprints: cómo repartimos las tareas, registramos el tiempo, resolvemos bloqueos y revisamos el trabajo. Los acuerdos se pueden ajustar en las reuniones semanales si vemos que necesitamos cambiar algo.
 
-## 1. Control de versiones y Git Flow
+## 1. Flujo de trabajo diario
 
-El equipo utilizará un flujo de trabajo basado en **Git Flow simplificado**:
+Cada tarea seguirá estos pasos:
 
-* **`main`:** Rama de producción. Solo contiene código estable, testeado y revisado en los cierres de sprint semanales. Está protegida contra pushes directos.
-* **`develop`:** Rama de integración continua. Es la base de trabajo donde convergen las diferentes funcionalidades aprobadas.
-* **Ramas de trabajo:** Salen siempre de `develop` y siguen esta convención de nombres:
-  * `feature/issue-<id>-descripcion-corta` $\rightarrow$ Nuevas funcionalidades (ej. `feature/issue-4-auth-jwt`).
-  * `fix/issue-<id>-descripcion-corta` $\rightarrow$ Corrección de errores (ej. `fix/issue-9-error-token-qr`).
-  * `docs/issue-<id>-descripcion-corta` $\rightarrow$ Documentación y actas (ej. `docs/issue-1-acta-sprint-1`).
-  * `setup/issue-<id>-descripcion-corta` $\rightarrow$ Configuración de herramientas y entorno.
+1. Revisamos el tablero de GitHub Projects y elegimos una tarea asignada de `Todo`, empezando por las de mayor prioridad. La pasamos a `In Progress` al comenzar.
+2. Abrimos la issue y creamos una rama desde `develop`, vinculada a ella. Utilizamos el prefijo que corresponda y el número de la issue, por ejemplo `docs/issue-7-analisis-competencia`.
+3. Iniciamos el temporizador de Toggl Track con el número y el nombre de la tarea, por ejemplo `#7 Análisis de competencia`.
+4. Trabajamos en la tarea y guardamos avances mediante commits con mensajes claros.
+5. Al hacer una pausa o terminar, detenemos el temporizador y anotamos en la issue lo realizado, los bloqueos y el siguiente paso cuando sea necesario.
+6. Subimos la rama y abrimos una pull request hacia `develop`, solicitando la revisión de la otra persona. Cuando se revise, se compruebe y se integre, actualizamos la issue y su estado en el tablero.
 
----
+## 2. Organización de tareas e incidencias
 
-## 2. Convención de Commits (Conventional Commits)
+Usaremos la [plantilla de tareas](../.github/ISSUE_TEMPLATE/tarea.md) para explicar qué hay que hacer, cómo comprobaremos que está terminado y cuánto tiempo estimamos. Indicaremos también responsable, prioridad y dependencias en la issue o en el tablero.
 
-Los mensajes de commit deben ser claros, explicativos y redactados en presente o infinitivo, utilizando el estándar:
+Si encontramos un error o aparece una prueba que requiere trabajo adicional, crearemos una issue con una descripción, una estimación y una forma de comprobar el resultado. Así podremos priorizarla y seguirla. Si el problema impide terminar la tarea actual, lo comentaremos y decidiremos juntos cómo proceder.
 
-`tipo(alcance opcional): descripción breve`
+## 3. Ramas y commits
 
-* **`feat:`** Una nueva característica para el usuario (ej. `feat(auth): añade middleware de verificación de roles`).
-* **`fix:`** Corrección de un fallo o bug (ej. `fix(ticket): valida formato de imagen antes de subir a Cloudinary`).
-* **`docs:`** Cambios exclusivamente en la documentación (ej. `docs: añade acta de seguimiento del sprint 1`).
-* **`style:`** Formato, espacios, punto y coma, sin cambios en la lógica (ej. `style: formatea componentes con Prettier`).
-* **`refactor:`** Cambio de código que no arregla un bug ni añade una feature (ej. `refactor(db): modulariza conexión de Mongoose`).
-* **`chore:`** Tareas de mantenimiento, actualización de paquetes o configuración (ej. `chore: actualiza dependencias en package.json`).
+- **`main`:** contiene las versiones estables para la entrega. No haremos cambios directos; incorporaremos el trabajo mediante una pull request revisada.
+- **`develop`:** reúne el trabajo revisado de las distintas tareas.
+- **Ramas de tarea:** parten de `develop` y llevan el número de la issue. Usaremos `feature/` para funcionalidades, `fix/` para errores, `docs/` para documentación, `setup/` para configuración y `testing/` para pruebas. Por ejemplo: `fix/issue-15-error-token`.
 
----
+Los commits seguirán el formato `tipo(alcance opcional): descripción breve`. Utilizaremos `feat`, `fix`, `docs`, `style`, `refactor`, `test` o `chore`, según el cambio. Por ejemplo: `docs: actualiza el seguimiento del sprint 1`.
 
-## 3. Política de Pull Requests y Revisiones de Código (Code Review)
+## 4. Revisión del trabajo
 
-1. **Prohibido el self-merge:** Ningún integrante puede fusionar sus propias ramas directamente en `develop` ni en `main`.
-2. **Revisión cruzada obligatoria:** Toda Pull Request debe tener como *Reviewer* al otro compañero del equipo.
-3. **Cierre de issues automático:** La descripción de la PR debe incluir la palabra clave de vinculación (`Closes #<id>` o `Fixes #<id>`) para que la tarjeta del tablero avance sola.
-4. **Criterios para aprobar una PR:**
-   * El linter pasa sin errores (`npm run lint`).
-   * No se introducen archivos innecesarios ni secretos (`.env`, `node_modules`).
-   * El código cumple los criterios de aceptación especificados en la issue correspondiente.
+Cada pull request la revisará la otra persona antes de integrarla. En la descripción enlazaremos la issue correspondiente y explicaremos qué se ha hecho y cómo se ha comprobado. Podemos usar `Closes #<id>` o `Fixes #<id>` para vincular su cierre; comprobaremos el estado de la issue y del tablero tras la integración, ya que depende de la configuración y de la rama de destino.
 
----
+Antes de pedir revisión, quien abre la pull request comprobará que:
 
-## 4. Estándares de Código y Calidad
+- Se cumplen los criterios de aceptación de la issue y se han realizado las comprobaciones aplicables.
+- Los cambios están completos y no incluyen archivos innecesarios, credenciales ni datos privados.
+- Las comprobaciones disponibles del proyecto, como el linter y las pruebas, pasan cuando estén configuradas.
 
-* **Linter y formateador:** Se utilizarán **ESLint 9** y **Prettier 3** con configuración idéntica en ambos puestos de trabajo para evitar conflictos de formato.
-* **Nomenclatura:**
-  * Componentes React: `PascalCase` (ej. `TicketCard.jsx`).
-  * Funciones, variables y controladores: `camelCase` (ej. `getUserById`, `isTokenExpired`).
-  * Modelos de MongoDB: `PascalCase` en singular (ej. `User.js`, `Ticket.js`).
-  * Rutas de la API REST: en minúsculas y plural (ej. `/api/communities`, `/api/incidents`).
+La persona que revisa leerá los cambios, comprobará que se entiende lo realizado y señalará cualquier duda o corrección. Una vez resueltas, aprobará la pull request y se integrará en `develop`.
 
----
+## 5. Comunicación y bloqueos
 
-## 5. Seguridad y Gestión de Secretos
+Cada día que trabajemos en el proyecto nos enviaremos un mensaje por WhatsApp con lo que hemos hecho, lo que vamos a hacer y los bloqueos que tengamos. Dejaremos las decisiones que afecten a una tarea en su issue para que queden registradas.
 
-1. **Variables de entorno:** Queda estrictamente prohibido subir claves de API, tokens JWT o credenciales de bases de datos al repositorio.
-2. **Uso de `.env.example`:** Se mantendrá un archivo de ejemplo sin datos sensibles para que cualquier miembro sepa qué variables debe configurar localmente.
-3. **Cookies seguras:** Las sesiones web se almacenarán en cookies HTTP con las directivas `HttpOnly`, `Secure` y `SameSite=Strict/Lax` para prevenir ataques XSS y CSRF.
+Si llevamos unos 45 minutos bloqueados sin encontrar una salida, avisaremos por WhatsApp y, cuando sea posible, nos conectaremos por Discord para revisar el problema juntos compartiendo pantalla. Si no podemos resolverlo en ese momento, anotaremos el bloqueo y el siguiente paso en la issue.
 
----
+## 6. Revisión y planificación semanal
 
-## 6. Auditoría y Control del Tiempo (Toggl Track)
+Los viernes revisaremos juntos el trabajo del sprint, preferiblemente en clase:
 
-Para garantizar un reparto equitativo del esfuerzo y justificar las horas dedicadas ante la evaluación del módulo:
-* Cada miembro activará el temporizador de **Toggl Track** al empezar una tarea, indicando el número de la issue (ej. `#3 [BE] Endpoints Auth`).
-* Al final de cada semana, los tiempos registrados se contrastarán con las estimaciones de la planificación en la reunión de sprint review.
+1. Comprobaremos las tareas y pull requests terminadas, pendientes o bloqueadas y revisaremos que lo integrado en `develop` funciona.
+2. Si la versión está lista para la entrega, abriremos y revisaremos una pull request de `develop` a `main`. El despliegue dependerá de la configuración y de que las comprobaciones hayan terminado correctamente.
+3. Completaremos juntos los apartados 1–7 del [seguimiento semanal](seguimiento/README.md). Cada persona rellenará su aportación y sus evidencias en el apartado 8.
+4. Compararemos las horas reales con las estimaciones y anotaremos las desviaciones y sus motivos en el seguimiento.
+5. Priorizaremos el backlog, seleccionaremos el trabajo abordable para el siguiente sprint y asignaremos responsables, estimaciones y dependencias. Si hace falta, ajustaremos el alcance y comunicaremos los cambios al profesorado.
+
+## 7. Roles durante los sprints
+
+Alternaremos las funciones de Product Owner y Scrum Master. El Product Owner se encargará de ordenar las prioridades y comprobar que el resultado responde al objetivo del producto. El Scrum Master facilitará la reunión, revisará que el tablero esté actualizado y recordará el registro de horas. Seguiremos tomando juntos las decisiones importantes y revisando el trabajo de la otra persona.
+
+| Sprint | Product Owner | Scrum Master | Atención especial prevista |
+|---|---|---|---|
+| 1 | Pablo | Rocío | Revisar el backlog y preparar las herramientas de trabajo. |
+| 2 | Rocío | Pablo | Revisar el acceso y la incorporación a la comunidad. |
+| 3 | Pablo | Rocío | Seguir el avance de incidencias y el uso de recursos. |
+| 4 | Rocío | Pablo | Revisar avisos, mensajes y organización del trabajo. |
+| 5 | Pablo | Rocío | Coordinar las pruebas de las consultas. |
+| 6 | Rocío | Pablo | Coordinar las pruebas finales y la documentación de entrega. |
+
+Las responsabilidades de cada sprint se podrán ajustar según el avance real.
+
+## 8. Tiempo y presupuesto
+
+Registraremos en Toggl Track cada sesión de trabajo con el proyecto VecinHub y el número de la issue. La planificación prevé unas seis horas por persona y sprint, 12 horas-persona por semana y 72 en total, incluidas ocho horas de reserva.
+
+En cada revisión compararemos el tiempo dedicado con lo previsto y recogeremos las diferencias en el registro semanal. También revisaremos el consumo y los posibles costes de los servicios descritos en [recursos y organización](recursos.md#4-servicios-externos-y-costes), y anotaremos cualquier cambio que afecte al presupuesto.
+
+## 9. Información y acceso a herramientas
+
+No subiremos contraseñas, tokens, claves ni archivos `.env` al repositorio. Cuando preparemos el entorno, mantendremos un `.env.example` sin valores sensibles y configuraremos las credenciales en los entornos correspondientes.
+
+Utilizaremos datos ficticios en pruebas, capturas y demostraciones. Antes de trabajar con datos de residentes reales, revisaremos cómo se van a tratar y las condiciones de los servicios utilizados.

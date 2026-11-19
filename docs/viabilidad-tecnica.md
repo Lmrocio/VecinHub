@@ -10,26 +10,25 @@
 
 ## 1. Requisitos funcionales y prioridades
 
-El MVP comprende todos los requisitos **Must**. Los Should se incorporarán solo después de verificar el recorrido esencial; no son condiciones de aceptación del MVP.
+**Revisión propuesta el 19 de noviembre de 2026:** conservamos el diseño original más abajo como referencia. Debemos acordar la reducción y consultarla con el profesorado. Prepararemos al menos dos comunidades ficticias con usuarios, viviendas y recursos separados para comprobar el aislamiento; aún debemos concretar el procedimiento sin permitir autoasignación de rol ni pertenencia.
 
-| ID | Prioridad | Requisito verificable |
+| ID original | Prioridad propuesta | Resultado |
 |---|---|---|
-| F1 | Must | Registrar y autenticar usuarios; el presidente crea una comunidad y sus viviendas. |
-| F2 | Must | Generar enlace con token y QR; un residente se registra y solicita la vivienda elegida. El presidente valida la vinculación antes de habilitar la participación. |
-| F3 | Must | El vecino crea una incidencia con título, descripción, categoría y foto opcional; consulta sus incidencias. |
-| F4 | Must | El presidente consulta incidencias de su comunidad y cambia su estado entre pendiente, en trámite y resuelta. |
-| F5 | Must | Autor y presidente intercambian mensajes privados en cada incidencia. |
-| F6 | Must | El presidente publica avisos; los miembros de la comunidad los consultan sin comentarios públicos. |
-| F7 | Must | El presidente crea y cierra consultas con opciones; una vivienda validada emite como máximo una respuesta y consulta el resultado agregado tras el cierre. |
-| F8 | Must | El servidor comprueba autenticación, rol, pertenencia y acceso al recurso en cada operación; la interfaz se adapta al móvil. |
-| F9 | Should | Enviar correo por aviso urgente o incidencia resuelta. |
-| F10 | Should | Filtrar incidencias por estado y categoría; descargar el QR para imprimirlo. |
-| F11 | Could | Actualizar el estado de la vista mediante sondeo periódico; indicadores de participación y accesibilidad adicional. |
-| F12 | Won't | Contabilidad, pagos, reservas, técnicos externos, varias comunidades por usuario o voto ponderado. |
+| F1 | Parcial | Inicio de sesión y datos de comunidad/vivienda preparados; registro y creación pública aplazados. |
+| F2 | Aplazado | Invitaciones, QR y validación de residentes. |
+| F3 | Esencial parcial | Crear y consultar incidencias sin fotografías. |
+| F4 | Esencial | Consultar incidencias y cambiar estado con rol autorizado. |
+| F5 | Aplazado | Mensajería privada. |
+| F6 | Secundario | Avisos, solo con capacidad adicional. |
+| F7 | Aplazado | Consultas y votaciones. |
+| F8 | Esencial | Comprobar sesión, rol, comunidad y recurso en servidor; interfaz adaptable. |
+| F9–F12 | Posterior | Notificaciones, filtros, QR, tiempo real y demás ampliaciones. |
 
-Una invitación demuestra posesión del enlace, no residencia: la validación del presidente reduce altas indebidas, pero no constituye una verificación de identidad. Puede haber varios residentes por vivienda; el primer voto aceptado consume el derecho de esa vivienda. El presidente puede participar si tiene una vivienda validada. Los resultados se consultan al cerrar y las consultas son orientativas.
+Mantendremos validación de entradas, hash de contraseñas y protección de sesión. Una invitación por sí sola no prueba residencia; antes de habilitar incorporación real necesitaremos un mecanismo de validación.
 
 ## 2. Arquitectura y decisiones técnicas
+
+El siguiente esquema refleja también servicios y funciones aplazadas; para el recorrido reducido no necesitamos Cloudinary ni correo.
 
 ```mermaid
 flowchart LR
@@ -45,6 +44,8 @@ React permite una SPA basada en componentes y vistas reactivas adaptadas al móv
 Los mensajes se recuperan al abrir o actualizar la incidencia; no se promete entrega en tiempo real. Las imágenes requieren validación de tipo y tamaño en servidor y acceso restringido mediante entrega autenticada o URLs firmadas de corta duración; una URL pública permanente no cumple la privacidad prevista. Si no se puede configurar esta protección, se desactiva la subida hasta resolverla. El servidor no conserva archivos en disco como almacenamiento permanente.
 
 ## 3. Modelo preliminar de MongoDB
+
+Conservamos el modelo original como diseño preliminar. Invitaciones, mensajes, fotos, avisos y votaciones no forman parte del núcleo propuesto; no debemos interpretar el diagrama como implementación terminada.
 
 ```mermaid
 erDiagram
@@ -91,18 +92,17 @@ Rocío tiene un nivel general de desarrollo de 3/5 y de 4,5/5 en diseño, maquet
 | Diseño, maquetación, UX y accesibilidad | 4,5 | 2,5 | Rocío guía una revisión semanal de accesibilidad y diseño adaptable. |
 | React y desarrollo frontend | 3 (general) | 2,5 (general) | Practicar componentes, formularios y rutas mediante una tarea conjunta por sprint. |
 | Node, Express y seguridad | 3 (general) | 2,5 (general) | Revisar semanalmente una ruta y sus pruebas de autorización. |
-| MongoDB y Mongoose | 3 (general) | 2,5 (general) | Prototipar índices y `withTransaction` y revisar los resultados durante el sprint de consultas. |
-| Despliegue e imágenes | 3 (general) | 2,5 | Rocío apoya el despliegue; ambos prueban accesos privados de Cloudinary y repasan fallos en cada revisión. |
-La planificación comprende seis sprints, 72 horas-persona comprometidas y defensa el 18 de diciembre de 2026. El equipo prioriza los requisitos Must; las ampliaciones se abordarán después del núcleo y los avances se revisarán semanalmente.
+| MongoDB y Mongoose | 3 (general) | 2,5 (general) | Revisar modelos, índices y acceso a los datos de cada comunidad. |
+| Despliegue | 3 (general) | 2,5 | Colaborar en el despliegue público y la automatización. |
+Mantenemos seis sprints y la entrega prevista para el 18 de diciembre. La nueva estimación supera el presupuesto original de 72 horas-persona; debemos ajustar alcance o capacidad. Cada viernes decidiremos y podremos modificar el reparto.
 ## 5. Riesgos y mitigación
 
 | Riesgo | Probabilidad / impacto estimados | Mitigación y comprobación |
 |---|---|---|
-| Acceso a datos de otra comunidad o a mensajes privados | Media / alto | Comprobar comunidad y autorización en cada consulta; pruebas de acceso cruzado con ambos roles. |
-| Duplicación de votos o escritura parcial | Media / alto | Índice único y transacción; pruebas concurrentes y de fallo intermedio. |
-| Deducción del voto en grupos pequeños o por registros | Alta / alto | Agregar al cierre, minimizar registros y explicar límites; no prometer anonimato absoluto. |
-| Enlace de invitación compartido fuera de la finca | Media / alto | Token revocable y caducable; presidente valida vínculo y puede revocarlo. |
-| Imágenes privadas expuestas | Media / alto | Almacenamiento privado, validación y enlaces firmados; probar acceso sin autorización. |
-| Desconocimiento de transacciones o despliegue | Media / medio | Prototipo técnico temprano y trabajo en pareja; revisar compatibilidad antes de desarrollar votaciones. |
-| Plazo o carga del equipo insuficientes | Alta / alto | Medir horas y avance semanal; terminar Must primero y aplazar mejoras. |
+| Acceso a datos de otra comunidad | Media / alto | Comprobar autorización en cada consulta y probar con dos comunidades ficticias. |
+| Credenciales o sesión expuestas | Media / alto | Hash de contraseñas, cookies seguras, CSRF y pruebas de acceso no autorizado. |
+| Despliegue público o CI/CD bloqueados | Media / alto | Preparar servicios y automatización pronto; consultar alternativas con el profesorado. |
+| Plazo o carga del equipo insuficientes | Alta / alto | Medir horas y avance semanal; priorizar el recorrido reducido y ajustar alcance o plazo. |
 | Límites o parada de servicios gratuitos | Media / medio | Vigilar almacenamiento y transferencia, generar alertas, limitar cargas y preparar demostración local con datos ficticios. |
+
+Si retomamos invitaciones, imágenes o votaciones, volveremos a revisar los riesgos de enlaces compartidos, exposición de fotografías, votos duplicados y privacidad descritos en el modelo anterior.

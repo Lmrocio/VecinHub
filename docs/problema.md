@@ -17,7 +17,7 @@ Para comparar alternativas se consideran tres propuestas de alcance distinto:
 |---|---|---|
 | Préstamo y alquiler de material deportivo entre vecinos | Rocío | Implicaría resolver las condiciones de alquiler, fianzas y posibles daños. |
 | Reservas y gestión de pistas comunitarias de pádel | Pablo | Se orienta a comunidades con pistas y cubre un conjunto más reducido de necesidades. |
-| VecinHub | Equipo | Reúne incidencias y comunicación comunitaria, encaja en MERN y permite priorizar un MVP para seis sprints. |
+| Moravía (antes VecinHub) | Equipo | Reúne incidencias y comunicación comunitaria, encaja en MERN y permite priorizar un MVP para seis sprints. |
 
 La comparación recoge las propuestas facilitadas para el documento. La fecha y el desarrollo de la sesión de selección no están documentados.
 
@@ -25,7 +25,7 @@ La comparación recoge las propuestas facilitadas para el documento. La fecha y 
 
 En comunidades pequeñas o medianas, parte de la coordinación diaria recae en el presidente y los residentes. Una avería puede comunicarse por teléfono o por un grupo de mensajería, mientras que los avisos se reparten entre el tablón físico, mensajes y reuniones. Esto dificulta recuperar la información y saber qué ha ocurrido desde que se comunicó una incidencia.
 
-Las conversaciones exploratorias realizadas por el equipo señalan dificultades para recibir y localizar avisos, acceder al canal comunitario y mantener la privacidad del número de teléfono. El alcance y la frecuencia de estas situaciones pueden variar entre comunidades. La aplicación no busca reemplazar la deliberación presencial ni la gestión contable.
+Planteamos como hipótesis posibles dificultades para recibir y localizar avisos, acceder al canal comunitario y mantener la privacidad del número de teléfono. El alcance y la frecuencia de estas situaciones pueden variar entre comunidades. La aplicación no busca reemplazar la deliberación presencial ni la gestión contable.
 
 ## 2. Usuarios objetivo
 
@@ -49,23 +49,23 @@ Los siguientes perfiles son **arquetipos de diseño**, no personas entrevistadas
 
 ## 3. Investigación exploratoria
 
-Mantuvimos conversaciones informales con personas de nuestro entorno sobre la comunicación en sus comunidades de vecinos y la utilidad de una aplicación como VecinHub. Las aportaciones se recogieron de manera cualitativa, sin un cuestionario estructurado ni un recuento sistemático de participantes o respuestas. Por ello, los siguientes hallazgos resumen temas mencionados y no permiten calcular porcentajes ni generalizar los resultados a todas las comunidades.
+Mantuvimos conversaciones informales con personas de nuestro entorno sobre la comunicación en sus comunidades. No recogimos aquí las fechas, las preguntas ni el número de participantes, así que tenemos que completar esos datos y concretar qué respuestas recordamos antes de sacar conclusiones.
 
-Las personas consultadas señalaron estas dificultades:
+Creemos que en algunas comunidades puede resultar difícil localizar avisos o conocer el estado de una incidencia, y que algunas personas podrían preferir no compartir su teléfono. Por eso pensamos que un listado de incidencias con estados podría facilitar el seguimiento. Todavía tenemos que comprobar estas ideas. Los perfiles anteriores son arquetipos de diseño.
 
-- **Acceso desigual a la información:** no todos los vecinos pertenecen al grupo de WhatsApp de su comunidad y, por tanto, pueden no recibir los avisos compartidos en él.
-- **Avisos difíciles de encontrar:** los mensajes importantes pueden quedar mezclados con conversaciones y contenidos que no afectan a la gestión de la finca.
-- **Privacidad del teléfono:** algunas personas prefieren no compartir su número con el resto de los integrantes de un grupo vecinal.
-- **Limitaciones del tablón físico:** los avisos pegados en papel no siempre resultan visibles para todos los residentes.
+### Validación futura propuesta
 
-También se valoró positivamente disponer de una aplicación que facilitara el acceso a la información comunitaria. A partir de estas aportaciones, VecinHub plantea un tablón oficial consultable, separado de las conversaciones, y el acceso de los residentes mediante invitación sin exigir que compartan su número de teléfono con los demás vecinos. El envío de notificaciones por correo figura como mejora posterior al núcleo del MVP; la recepción efectiva de avisos dependerá de las funciones finalmente implementadas.
+- **Objetivo:** conocer cómo comunicamos y seguimos incidencias, y observar si entendemos el recorrido propuesto.
+- **Perfil:** invitar, si disponemos de tiempo, a personas con experiencia como residentes o responsables de comunidades; anotar cuántas participan y cómo las seleccionamos.
+- **Preguntas neutrales:** «¿Cómo comunicáis una incidencia?», «¿Cómo consultáis su evolución?», «¿Qué dificultades encontráis, si alguna?». Pedir un ejemplo reciente sin dirigir la respuesta.
+- **Registro:** solicitar consentimiento y anotar respuestas sin nombres ni datos de la finca; guardar fecha, perfil general y preguntas. No publicar información identificable.
+- **Interpretación y límites:** resumir coincidencias y diferencias sin extrapolar porcentajes de una muestra pequeña o de conveniencia. Separar citas autorizadas, observaciones e interpretaciones; documentar también respuestas contrarias. No contamos aún con resultados.
 
-Estas conversaciones aportan orientación inicial para el diseño. Una prueba de uso posterior permitirá observar si los residentes encuentran los avisos y completan las tareas principales con facilidad.
 ## 4. Análisis de alternativas
 
 Comparación basada en información pública de los proveedores consultada el 6 de noviembre de 2026. Las limitaciones son de encaje con esta propuesta y no equivalen a pruebas independientes de calidad o precio.
 
-| Solución | Fortalezas | Debilidades o carencias para el público objetivo | Oportunidad para VecinHub |
+| Solución | Fortalezas | Debilidades o carencias para el público objetivo | Oportunidad para Moravía |
 |---|---|---|---|
 | [TucomunidApp](https://tucomunidapp.com/) | Incidencias con seguimiento, votación, reservas y recibos. | Se conecta con el despacho del administrador y requiere invitación. | Permitir que el presidente cree la comunidad sin integración con un despacho. |
 | [Plusvecinos PropApp](https://ayuda.plusvecinos.com/portal/es/kb/articles/men%C3%BA-inicio-plusvecinos-propapp) | Permite invitar vecinos, gestionar avisos, incidencias y encuestas; sus [encuestas](https://ayuda.plusvecinos.com/portal/es/kb/articles/encuestas) se describen como anónimas y no vinculantes. | Cubre necesidades muy similares, además de funciones adicionales. | Centrarse en el circuito básico móvil; la ventaja de sencillez requiere validación. |
@@ -73,6 +73,8 @@ Comparación basada en información pública de los proveedores consultada el 6 
 
 Los grupos de mensajería también son una alternativa habitual: facilitan el intercambio inmediato, pero no proporcionan por sí solos un flujo de estados de incidencias ni un tablón separado de las conversaciones.
 
+Para el criterio 1a debemos completar la [comparación de al menos cinco competidores](analisis-competencia.md). Aquí conservamos las tres alternativas estudiadas en la propuesta inicial.
+
 ## 5. Propuesta de valor
 
-VecinHub propone un espacio móvil, creado por el presidente, que agrupa invitaciones por QR físico en el portal, seguimiento de incidencias con chat privado, tablón oficial unidireccional y consultas orientativas con una respuesta por vivienda, sin módulos contables. Su diferenciación es la combinación y el alcance reducido para comunidades pequeñas, no la afirmación de que ninguna otra aplicación ofrezca estas funciones. La facilidad de incorporación y el ahorro de tiempo deberán comprobarse en pruebas con residentes.
+Queremos ofrecer un espacio móvil para consultar y seguir incidencias sin módulos contables. El diseño inicial también incluía invitaciones, mensajes, avisos y consultas; por ahora proponemos dejarlos para más adelante o como opciones secundarias. Tendremos que comprobar si la aplicación resulta útil y fácil de usar.

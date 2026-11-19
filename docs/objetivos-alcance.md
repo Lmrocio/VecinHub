@@ -14,38 +14,32 @@ Desarrollar un prototipo web que facilite la comunicación y el seguimiento de a
 
 ## Objetivos específicos SMART
 
-Se planifican seis sprints semanales desde el 9 de noviembre hasta la revisión final del **18 de diciembre de 2026**, con 72 horas-persona comprometidas. Los porcentajes siguientes son metas de aceptación del prototipo, no resultados conseguidos.
+**Propuesta de revisión del 18 de noviembre de 2026:** tenemos que hablar estos cambios entre nosotros y consultarlos con el profesorado. Los objetivos originales trataban 1) el alta con QR y viviendas; 2) las incidencias, la mensajería y la latencia; 3) el voto único; y 4) la usabilidad y el despliegue. Proponemos adaptar los objetivos 1, 2 y 4, y dejar el 3 para más adelante junto con las votaciones. También dejamos fuera la meta de latencia porque medirla requeriría demasiado trabajo para este prototipo.
 
-| Objetivo | Plazo previsto | Medición y meta |
-|---|---|---|
-| 1. Lograr que el 100 % de los casos de prueba de alta de finca, generación de token QR y vinculación de viviendas supere las validaciones de seguridad. | 20 de noviembre de 2026 | Completar 100 % de los casos de prueba de alta, caducidad, revocación y validación que definamos. |
-| 2. Completar el ciclo de incidencias y la mensajería privada con una latencia de API inferior a 250 ms en el percentil 95. | 4 de diciembre de 2026 | Completar creación, tres estados y mensajes en ambos sentidos; superar las pruebas de permisos y obtener latencia de API inferior a 250 ms en el percentil 95 de 100 solicitudes de lectura autenticada en entorno de prueba estable, con datos de hasta 40 viviendas y sin arranque en frío. Registrar entorno y resultados. |
-| 3. Conseguir que las consultas admitan como máximo una respuesta por vivienda y rechacen los intentos duplicados. | 11 de diciembre de 2026 | Completar el recorrido de publicación a cierre; rechazar todos los intentos duplicados y accesos entre comunidades en las pruebas definidas. |
-| 4. Alcanzar una tasa de éxito superior al 80 % en las tareas de uso y desplegar el prototipo en Vercel y Render. | 18 de diciembre de 2026 | Desplegar en Vercel y Render y observar a al menos 4 personas del perfil objetivo realizando alta, incidencia y lectura de aviso. Registrar tareas, tiempos y dificultades; meta superior al 80 % de tareas completadas sin asistencia, calculada sobre el total de intentos. |
+| Objetivo revisado y trazabilidad | Fecha prevista | Comprobación y aceptación | Dependencias |
+|---|---|---|---|
+| Preparar cliente, API y datos ficticios (original 1) | 27 noviembre | Arrancar ambos entornos y preparar al menos dos comunidades con cuentas y recursos separados | Revisar ramas de backend y acordar datos |
+| Acceder y restringir recursos por rol y comunidad (original 1) | 4 diciembre | Registrar pruebas de acceso válido, credenciales erróneas y acceso cruzado rechazado | Datos y sesión segura |
+| Crear y consultar incidencias y cambiar su estado según rol (original 2) | 11 diciembre | Demostrar alta y consulta; comprobar rechazo de cambios sin permiso | Sesión, pertenencia y modelos |
+| Integrar, probar y publicar el prototipo (original 4) | 18 diciembre | Registrar resultados y defectos; comprobar la URL pública, CI/CD e instrucciones de instalación con datos ficticios | Recorrido completo, servicios y despliegue disponibles |
 
-Las pruebas de usuarios están planificadas y requieren reclutar participantes; si no es posible, se registrará la limitación en lugar de atribuir resultados. Los criterios se comprobarán mediante una lista de casos, resultados y defectos, y una sesión de demostración con datos ficticios.
+Son metas, no resultados. El enunciado exige despliegue público y CI/CD; prepararemos una demostración local por si surgen problemas, pero debemos consultar con el profesorado si no llegamos a publicar. Las pruebas con residentes dependen de la capacidad disponible.
 
 ## MVP: qué se incluye
 
-- Alta y acceso, comunidad y viviendas, enlace/QR de invitación con caducidad y validación del residente por el presidente.
-- Incidencias con foto opcional, estados y conversación privada entre autor y presidente.
-- Avisos publicados por el presidente y consultables por miembros.
-- Consultas orientativas con opciones, cierre, recuento agregado y un voto por vivienda validada; sin garantía de anonimato absoluto.
-- Autorización por rol y comunidad, diseño adaptable al móvil y pruebas de los recorridos esenciales.
+El MVP original incluía registro, creación de comunidades y viviendas, invitaciones con QR y validación, incidencias con fotos y mensajes privados, avisos y consultas con voto por vivienda. Tras el retraso y la estimación, proponemos un recorrido más reducido:
 
-El detalle y prioridades están en [viabilidad técnica](viabilidad-tecnica.md). Las fotografías requieren almacenamiento privado; el correo y la descarga del QR son mejoras posteriores al recorrido esencial.
+- Cliente y servidor mínimos, inicio y cierre de sesión y control de rol y comunidad en servidor.
+- Al menos dos comunidades ficticias, viviendas, cuentas y recursos separados; sin permitir autoasignación de roles ni acceso a otra comunidad.
+- Alta, listado y consulta de incidencias; cambio de estado por presidencia.
+- Validación de entradas, hash de contraseñas, protección de sesión, pruebas básicas y despliegue público previsto con datos ficticios.
+
+El tablón de avisos queda como opción secundaria sin horas incluidas. Proponemos posponer registro público, creación de comunidades desde la interfaz, invitaciones y QR, validación de residentes, fotos, mensajería, consultas, votaciones y notificaciones. Cada módulo añade interfaz, permisos, integración y pruebas; la incorporación pública requiere además un mecanismo seguro de vinculación. Debemos confirmar con el profesorado si el alcance reducido cumple el enunciado. Conservamos el diseño anterior como referencia en [viabilidad técnica](viabilidad-tecnica.md).
 
 ## Fuera de alcance y ampliaciones
 
-| Función excluida | Motivo y posible evolución |
-|---|---|
-| Contabilidad, recibos y pagos | Añaden complejidad y responsabilidad ajenas al problema operativo inicial; se valorarían en otra fase. |
-| Acuerdos legalmente vinculantes y voto ponderado | Requieren reglas y garantías adicionales; las consultas actuales son informativas. |
-| Asignación a técnicos, reservas de espacios y muro social | Amplían roles y flujos sin ser imprescindibles para seguir incidencias. |
-| Varias comunidades por usuario | Complica permisos y navegación; puede revisarse tras validar una comunidad por usuario. |
-| Aplicaciones nativas iOS y Android | La web adaptable cubre el acceso móvil sin mantener dos plataformas adicionales. |
-| Chat general, notificaciones push y tiempo real | La conversación se limita a cada incidencia; las mejoras de inmediatez se valorarían después. |
+También aplazamos contabilidad, pagos, voto ponderado, reservas, técnicos externos, múltiples comunidades por usuario y aplicaciones nativas. El presupuesto revisado supera las 72 horas incluso antes de contabilizar trabajo previo: consultar [estimación](recursos.md#2-estimación-y-calendario). La reducción propuesta aún requiere ajuste y confirmación.
 
 ## Criterios globales de éxito
 
-El MVP se considerará aceptado cuando los requisitos Must y las comprobaciones de seguridad indicadas en la viabilidad pasen, los cuatro objetivos se midan y se documenten los fallos restantes. La prueba de uso aporta evidencia de facilidad de uso, no demuestra adopción real ni ahorro económico. La aceptación requiere documentar el despliegue y los resultados reales de las pruebas; las metas no son resultados alcanzados.
+Para dar por terminado el recorrido, comprobaremos los permisos, registraremos los resultados y defectos y prepararemos una demostración que podamos repetir. Todavía tenemos que acordar el alcance y realizar esas pruebas.

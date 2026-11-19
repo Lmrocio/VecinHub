@@ -34,7 +34,9 @@ describe('User', () => {
   });
 
   it('rechaza un correo con formato no válido', async () => {
-    await expect(User.create({ ...baseUser, email: 'no-es-un-correo' })).rejects.toThrow(/Correo no válido/);
+    await expect(User.create({ ...baseUser, email: 'no-es-un-correo' })).rejects.toThrow(
+      /Correo no válido/,
+    );
   });
 
   it('rechaza un rol que no existe', async () => {

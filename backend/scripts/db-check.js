@@ -31,7 +31,10 @@ try {
   const found = await User.findById(user._id).populate('communityId', 'name');
   console.log('Usuario creado y leído:', found.toJSON());
 
-  await Promise.all([User.deleteOne({ _id: user._id }), Community.deleteOne({ _id: community._id })]);
+  await Promise.all([
+    User.deleteOne({ _id: user._id }),
+    Community.deleteOne({ _id: community._id }),
+  ]);
   console.log('Documentos de prueba eliminados. Conexión correcta ✔');
 } catch (err) {
   console.error('Fallo en la comprobación:', err.message);

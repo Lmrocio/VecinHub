@@ -60,6 +60,20 @@ Ambos integrantes colaboran en la integración, las pruebas, la revisión de cam
 
 ## Consulta del repositorio
 
+### Preparación del entorno
+
+Necesitamos Node.js 22 o superior y npm. El repositorio utiliza `frontend/` para React y `backend/` para Express, siguiendo el enunciado; equivalen a las carpetas `client/` y `server/` mencionadas en la issue de configuración.
+
+```bash
+npm install
+npm install --prefix frontend
+npm install --prefix backend
+```
+
+Copiamos `backend/.env.example` como `backend/.env` y completamos `MONGODB_URI` con nuestra conexión de MongoDB. El frontend inicial no necesita variables de entorno. No subimos archivos `.env` ni credenciales al repositorio.
+
+Para trabajar con el frontend usamos `npm run dev --prefix frontend`; para comprobar su compilación, `npm run build --prefix frontend`. Las instrucciones de arranque del servidor están en [backend/README.md](backend/README.md). Desde la raíz podemos ejecutar `npm run lint`, `npm run format` y `npm run format:check` para revisar y dar formato al código de ambos proyectos.
+
 Los documentos pueden abrirse directamente desde la tabla anterior en GitHub. Para consultarlos en local, clona el repositorio con su URL desde el botón **Code** de GitHub y abre la carpeta en un editor compatible con Markdown, como VS Code.
 
 La carpeta `docs/` contiene la propuesta. El repositorio se encuentra en fase de planificación y todavía no incluye una aplicación ejecutable; el calendario de desarrollo y el flujo de trabajo previsto están descritos en [recursos y organización](docs/recursos.md).
